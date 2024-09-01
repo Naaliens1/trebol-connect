@@ -12,7 +12,7 @@ const Index = () => {
         <section id="home" className="bg-purple-100 py-20 mt-16">
           <div className="container mx-auto px-4">
             <h1 className="text-5xl font-bold mb-8 text-center">Bienvenidos a Trébol de Cuatro Hojas</h1>
-            <p className="text-xl mb-8 text-center max-w-2xl mx-auto">Descubre nuestra cuidadosa selección de libros y productos naturales, diseñados para enriquecer tu mente y nutrir tu espíritu.</p>
+            <p className="text-xl mb-8 text-center max-w-2xl mx-auto">Descubre nuestra cuidadosa selección de libros, pensados para enriquecer tu mente y nutrir tu espíritu.</p>
             <div className="text-center">
               <a href="#catalog" className="bg-purple-500 text-white px-8 py-3 rounded-full hover:bg-purple-600 transition-colors inline-block">Explorar Catálogo</a>
             </div>
