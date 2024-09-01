@@ -2,18 +2,15 @@ import React from 'react';
 import { ExternalLink } from 'lucide-react';
 
 const products = [
-  { id: 1, name: 'Libro de Meditación', price: '$15.000', image: 'https://example.com/meditation-book.jpg' },
-  { id: 2, name: 'Aceite Esencial de Lavanda', price: '$8.000', image: 'https://example.com/lavender-oil.jpg' },
-  { id: 3, name: 'Set de Velas Aromáticas', price: '$12.000', image: 'https://example.com/scented-candles.jpg' },
-  // Add more products as needed
+  { id: 1, name: 'Libro "Cómo Meditar"', price: '$15.000' },
+  { id: 2, name: 'Aceite Esencial de Lavanda', price: '$8.000' },
+  { id: 3, name: 'Set de Velas Aromáticas', price: '$12.000' },
+  { id: 4, name: 'Incienso de Sándalo', price: '$5.000' },
+  { id: 5, name: 'Difusor de Aromas', price: '$20.000' },
+  { id: 6, name: 'Libro "Mindfulness Diario"', price: '$18.000' },
 ];
 
 const Catalog = () => {
-  const handleWhatsAppOrder = (product) => {
-    const message = encodeURIComponent(`Quiero comprar el producto ${product.name}`);
-    window.open(`https://wa.me/56978784632?text=${message}`, '_blank');
-  };
-
   return (
     <section id="catalog" className="py-12 bg-white">
       <div className="container mx-auto px-4">
@@ -21,16 +18,17 @@ const Catalog = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product) => (
             <div key={product.id} className="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded" loading="lazy" />
               <h3 className="text-lg font-semibold mb-2 text-purple-800">{product.name}</h3>
               <p className="text-purple-600 font-bold mb-4">{product.price}</p>
-              <button
-                onClick={() => handleWhatsAppOrder(product)}
+              <a
+                href={`https://wa.me/56978784632?text=Hola, me interesa comprar: ${encodeURIComponent(product.name)}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition-colors flex items-center justify-center"
               >
                 <span>Comprar en WhatsApp</span>
                 <ExternalLink className="ml-2 h-4 w-4" />
-              </button>
+              </a>
             </div>
           ))}
         </div>
