@@ -68,7 +68,9 @@ const Contact = () => {
             </button>
           </form>
           <div className="w-full md:w-1/3">
-            <img src="https://imgur.com/hwmDrpY" alt="Trébol de Cuatro Hojas Logo Alternativo" className="w-32 mx-auto mb-6" />
+            <a href="https://imgur.com/hwmDrpY" target="_blank" rel="noopener noreferrer">
+              <img src="https://i.imgur.com/hwmDrpY.jpg" alt="Logo Alternativo" className="w-32 mx-auto mb-6" />
+            </a>
             <div className="flex justify-center space-x-4 mb-6">
               <a href="https://www.instagram.com/trebolde4hojaschile/" target="_blank" rel="noopener noreferrer" className="text-purple-800 hover:text-purple-600 transition-colors">
                 <Instagram size={32} />
@@ -77,6 +79,9 @@ const Contact = () => {
                 <Phone size={32} />
               </a>
             </div>
+            <a href="https://imgur.com/YQxm6Eo" target="_blank" rel="noopener noreferrer">
+              <img src="https://i.imgur.com/YQxm6Eo.png" alt="Otro Logo" className="w-32 mx-auto mb-6" />
+            </a>
             <p className="text-center text-purple-700">Síguenos en nuestras redes sociales para estar al día con nuestras novedades y ofertas especiales.</p>
           </div>
         </div>
