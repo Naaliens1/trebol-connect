@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Search } from 'lucide-react';
 
 const fetchCatalog = async () => {
-  // In a real scenario, you would integrate with the WhatsApp Business API
-  // For now, we'll use a simulated catalog
-  return [
-    { id: 1, name: 'Libro 1', price: '$10.99', image: 'https://via.placeholder.com/150', category: 'Ficción' },
-    { id: 2, name: 'Libro 2', price: '$12.99', image: 'https://via.placeholder.com/150', category: 'No Ficción' },
-    { id: 3, name: 'Libro 3', price: '$9.99', image: 'https://via.placeholder.com/150', category: 'Infantil' },
-    // Add more products as needed
-  ];
+  // This is where you would integrate with the WhatsApp Business API
+  // For demonstration purposes, we'll simulate an API call
+  const response = await fetch('https://api.example.com/whatsapp-catalog');
+  if (!response.ok) {
+    throw new Error('Failed to fetch catalog');
+  }
+  return response.json();
 };
 
 const Catalog = () => {
   const { data: products, isLoading, error } = useQuery({
     queryKey: ['catalog'],
     queryFn: fetchCatalog,
+    refetchInterval: 60000, // Refetch every minute to keep catalog updated
   });
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -33,7 +33,7 @@ const Catalog = () => {
   );
 
   if (isLoading) return <div className="text-center py-8">Cargando catálogo...</div>;
-  if (error) return <div className="text-center py-8 text-red-500">Error al cargar el catálogo</div>;
+  if (error) return <div className="text-center py-8 text-red-500">Error al cargar el catálogo: {error.message}</div>;
 
   return (
     <section id="catalog" className="py-12">
@@ -56,15 +56,15 @@ const Catalog = () => {
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
             <option value="">Todas las categorías</option>
-            <option value="Ficción">Ficción</option>
-            <option value="No Ficción">No Ficción</option>
-            <option value="Infantil">Infantil</option>
+            {Array.from(new Set(products?.map(p => p.category))).map(category => (
+              <option key={category} value={category}>{category}</option>
+            ))}
           </select>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProducts.map((product) => (
+          {filteredProducts?.map((product) => (
             <div key={product.id} className="border rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-              <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded" />
+              <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded" loading="lazy" />
               <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
               <p className="text-purple-600 font-bold mb-2">{product.price}</p>
               <p className="text-gray-600 mb-4">{product.category}</p>

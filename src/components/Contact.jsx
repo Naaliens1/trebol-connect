@@ -64,7 +64,7 @@ const Contact = () => {
               type="submit"
               className="bg-purple-500 text-white px-6 py-2 rounded-full hover:bg-purple-600 transition-colors"
             >
-              Enviar Mensaje
+              Enviar Mensaje por WhatsApp
             </button>
           </form>
           <div className="w-full md:w-1/3">
