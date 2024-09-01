@@ -14,7 +14,7 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const message = encodeURIComponent(`Nombre: ${formData.name}\nEmail: ${formData.email}\nMensaje: ${formData.message}`);
+    const message = encodeURIComponent(`Hola, mi nombre es ${formData.name}\n,mi correo es: ${formData.email}\nMensaje: ${formData.message}`);
     window.open(`https://wa.me/56978784632?text=${message}`, '_blank');
   };
 
@@ -68,7 +68,7 @@ const Contact = () => {
             </button>
           </form>
           <div className="w-full md:w-1/3">
-            <img src="https://imgur.com/gallery/trebol-logo-solo-Nz8Ognd" alt="Trébol de Cuatro Hojas Logo Alternativo" className="w-32 mx-auto mb-6" />
+            <img src="https://imgur.com/hwmDrpY" alt="Trébol de Cuatro Hojas Logo Alternativo" className="w-32 mx-auto mb-6" />
             <div className="flex justify-center space-x-4 mb-6">
               <a href="https://www.instagram.com/trebolde4hojaschile/" target="_blank" rel="noopener noreferrer" className="text-purple-800 hover:text-purple-600 transition-colors">
                 <Instagram size={32} />
